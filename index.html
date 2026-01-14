@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yadnyesh Pande | Data Analyst Fresher</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
+        
+        body { 
+            font-family: 'Space Grotesk', sans-serif; 
+            background-color: #050505; 
+            color: #e2e8f0; 
+            overflow-x: hidden;
+        }
+
+        .glass-card { 
+            background: rgba(15, 23, 42, 0.3); 
+            backdrop-filter: blur(20px); 
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+        }
+
+        .name-glow {
+            background: linear-gradient(to right, #0ea5e9, #38bdf8, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            transition: all 0.4s ease;
+            display: inline-block;
+        }
+
+        .name-glow:hover {
+            filter: drop-shadow(0 0 15px rgba(14, 165, 233, 0.6));
+            transform: scale(1.02);
+        }
+
+        .status-pulse {
+            width: 10px;
+            height: 10px;
+            background: #0ea5e9;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(14, 165, 233, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0); }
+        }
+
+        .project-viewport { width: 100%; overflow: hidden; }
+        .project-container { display: flex; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .project-slide { flex: 0 0 100%; padding: 0 12px; }
+        @media (min-width: 768px) { .project-slide { flex: 0 0 33.333%; } }
+
+        .profile-img { filter: grayscale(100%); transition: 0.5s; }
+        .profile-img:hover { filter: grayscale(0%); }
+    </style>
+</head>
+<body>
+
+<nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 glass-card px-6 py-3 flex items-center justify-between border-white/10 w-[94%] md:w-auto md:gap-8">
+    <a href="#home" class="flex items-center gap-2 group">
+        <div class="bg-sky-500 p-1.5 rounded-lg group-hover:rotate-12 transition">
+            <i data-lucide="scan-eye" class="text-black w-5 h-5"></i>
+        </div>
+        <span class="text-white font-bold tracking-tighter text-2xl">YP<span class="text-sky-500">.</span></span>
+    </a>
+
+    <div class="hidden md:flex gap-6 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
+        <a href="#about" class="hover:text-white transition">Insights</a>
+        <a href="#projects" class="hover:text-white transition">Projects</a>
+        <a href="#contact" class="hover:text-white transition">Connect</a>
+    </div>
+
+    <div class="flex items-center gap-4">
+        <div class="flex items-center gap-2 text-[10px] font-bold uppercase text-sky-400 border border-sky-400/30 px-4 py-2 rounded-full bg-sky-400/10 shadow-[0_0_15px_rgba(14,165,233,0.1)]">
+            <span class="status-pulse"></span> Available for Hire
+        </div>
+        <button id="menuBtn" class="md:hidden text-white">
+            <i data-lucide="menu"></i>
+        </button>
+    </div>
+
+    <div id="mobileMenu" class="hidden absolute top-full left-0 w-full mt-4 glass-card p-6 flex flex-col gap-4 text-center animate-in fade-in slide-in-from-top-4 duration-300">
+        <a href="#about" class="text-sm font-bold uppercase tracking-widest py-2 border-b border-white/5" onclick="toggleMenu()">Insights</a>
+        <a href="#projects" class="text-sm font-bold uppercase tracking-widest py-2 border-b border-white/5" onclick="toggleMenu()">Projects</a>
+        <a href="#contact" class="text-sm font-bold uppercase tracking-widest py-2" onclick="toggleMenu()">Connect</a>
+    </div>
+</nav>
+
+<section id="home" class="min-h-screen flex flex-col items-center justify-center pt-32 pb-20 px-6">
+    <div class="max-w-7xl w-full grid md:grid-cols-12 gap-10 items-center">
+        <div class="md:col-span-7 space-y-8">
+            <div class="inline-block px-4 py-1.5 rounded-full border border-sky-500/30 bg-sky-500/5 text-sky-400 text-xs font-bold uppercase tracking-widest">
+                Actively Seeking Job Opportunities
+            </div>
+            <h1 class="text-6xl md:text-8xl font-bold tracking-tight leading-[0.9]">
+                I Build <br> <span class="text-sky-500">Data Stories.</span>
+            </h1>
+            <p class="text-slate-400 text-xl max-w-xl leading-relaxed">
+                <span class="name-glow text-2xl md:text-3xl mb-2">Yadnyesh Pande</span> <br>
+                A Computer Science Fresher specialized in Data Analytics. Ready to contribute my technical skills to your engineering team.
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <a href="mailto:yadnyeshpande342@gmail.com?subject=Job Opportunity" class="bg-sky-500 text-black px-10 py-4 rounded-full font-bold hover:bg-sky-400 transition transform active:scale-95 shadow-lg shadow-sky-500/20">Hire Me Now</a>
+                <a href="#projects" class="text-white border border-white/10 px-10 py-4 rounded-full font-bold hover:bg-white/5 transition">View Projects</a>
+            </div>
+        </div>
+        <div class="md:col-span-5 flex justify-end">
+            <div class="glass-card p-4">
+                <img src="/myprofile/portfolio.png" alt="Yadnyesh Pande" class="profile-img rounded-2xl w-full h-[500px] object-cover">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-20 px-6 max-w-7xl mx-auto space-y-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass-card p-8 md:col-span-2 flex flex-col md:flex-row gap-8 items-center">
+            <div class="p-6 bg-sky-500/10 rounded-2xl"><i data-lucide="graduation-cap" class="text-sky-400 w-10 h-10"></i></div>
+            <div>
+                <h3 class="text-[10px] font-bold text-sky-500 uppercase tracking-widest mb-2">Education</h3>
+                <h4 class="text-2xl font-bold text-white mb-1">Bachelor of Technology in Computer Science</h4>
+                <p class="text-slate-400 font-medium">Dr. Babasaheb Ambedkar Technological University (DBATU)</p>
+                <p class="text-slate-500 text-sm mt-2">Specialized in Data Systems & Software Development</p>
+            </div>
+        </div>
+
+        <div class="glass-card p-8 border-sky-500/20 bg-sky-500/5 flex flex-col items-center justify-center text-center">
+            <div class="mb-4"><i data-lucide="code" class="text-sky-400 w-8 h-8"></i></div>
+            <span class="text-5xl font-bold text-white block mb-1">50+</span>
+            <p class="text-xs font-bold text-sky-500 uppercase tracking-widest">LeetCode SQL Problems Solved</p>
+        </div>
+    </div>
+
+    <div class="glass-card p-8">
+        <h3 class="text-[10px] font-bold text-sky-500 uppercase tracking-widest mb-6">Professional Certifications</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5">
+                <i data-lucide="shield-check" class="text-emerald-400 w-5 h-5"></i>
+                <span class="text-sm font-bold">Python for Data Science</span>
+            </div>
+            <div class="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5">
+                <i data-lucide="shield-check" class="text-emerald-400 w-5 h-5"></i>
+                <span class="text-sm font-bold">AI & Machine Learning Foundations</span>
+            </div>
+            <div class="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5">
+                <i data-lucide="shield-check" class="text-emerald-400 w-5 h-5"></i>
+                <span class="text-sm font-bold">Data Analysis with Excel Expert</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="py-20 px-6 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="glass-card p-10 md:col-span-2 flex flex-col justify-center">
+            <h2 class="text-3xl font-bold mb-8">Technical Stack</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="text-center p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-sky-500/30 transition-all">
+                    <i data-lucide="database" class="mx-auto mb-3 text-sky-400"></i>
+                    <span class="text-xs font-bold uppercase tracking-widest">SQL</span>
+                </div>
+                <div class="text-center p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-sky-500/30 transition-all">
+                    <i data-lucide="terminal" class="mx-auto mb-3 text-sky-400"></i>
+                    <span class="text-xs font-bold uppercase tracking-widest">Python</span>
+                </div>
+                <div class="text-center p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-sky-500/30 transition-all">
+                    <i data-lucide="layout-dashboard" class="mx-auto mb-3 text-sky-400"></i>
+                    <span class="text-xs font-bold uppercase tracking-widest">Power BI</span>
+                </div>
+                <div class="text-center p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-sky-500/30 transition-all">
+                    <i data-lucide="file-spreadsheet" class="mx-auto mb-3 text-sky-400"></i>
+                    <span class="text-xs font-bold uppercase tracking-widest">Excel</span>
+                </div>
+                <div class="text-center p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-sky-500/30 transition-all">
+                    <i data-lucide="brain-circuit" class="mx-auto mb-3 text-sky-400"></i>
+                    <span class="text-xs font-bold uppercase tracking-widest">AI & ML</span>
+                </div>
+                <div class="text-center p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-sky-500/30 transition-all">
+                    <i data-lucide="bar-chart-3" class="mx-auto mb-3 text-sky-400"></i>
+                    <span class="text-xs font-bold uppercase tracking-widest">EDA</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card p-8 flex flex-col items-center justify-center min-h-[450px]">
+            <h3 class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-6">Expertise Level</h3>
+            <div class="relative w-full h-full">
+                <canvas id="skillsChart"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="py-24 px-6 bg-[#080808]/50">
+    <div class="max-w-7xl mx-auto mb-16 flex flex-col md:flex-row justify-between items-end gap-6">
+        <div>
+            <h2 class="text-5xl font-bold mb-4">The Projects.</h2>
+            <p class="text-slate-400">A demonstration of technical problem-solving and data storytelling.</p>
+        </div>
+        <div class="flex gap-4">
+            <button onclick="moveSlide(-1)" class="p-4 rounded-full border border-white/10 hover:bg-white/10 transition active:scale-90">
+                <i data-lucide="arrow-left"></i>
+            </button>
+            <button onclick="moveSlide(1)" class="p-4 rounded-full border border-white/10 hover:bg-white/10 transition active:scale-90">
+                <i data-lucide="arrow-right"></i>
+            </button>
+        </div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto project-viewport">
+        <div class="project-container" id="slider">
+            <div class="project-slide">
+                <a href="https://github.com/yadnyeshpande" target="_blank" class="block group h-full">
+                    <div class="glass-card p-8 h-full border-white/5 group-hover:border-sky-500/50 transition-all duration-500">
+                        <span class="text-sky-400 text-[10px] font-bold uppercase tracking-widest">Medical Intelligence & ML</span>
+                        <h3 class="font-bold text-2xl mt-4 mb-4 group-hover:text-sky-400 transition">Skin Lesion Classification</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed">
+                            Developed a diagnostic system using the HAM10000 dataset, identifying **ResNet50** as the optimal model. Integrated into a responsive **Flask web app** for instant image classification and automated **PDF report generation**.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-[9px] border border-sky-500/30 px-2 py-1 rounded text-sky-400">ResNet50</span>
+                            <span class="text-[9px] border border-sky-500/30 px-2 py-1 rounded text-sky-400">Flask</span>
+                            <span class="text-[9px] border border-sky-500/30 px-2 py-1 rounded text-sky-400">Deep Learning</span>
+                        </div>
+                        <span class="text-[10px] font-bold text-white/40 uppercase group-hover:text-white flex items-center gap-2">GitHub Repo <i data-lucide="external-link" class="w-3 h-3"></i></span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="project-slide">
+                <a href="https://github.com/yadnyeshpande" target="_blank" class="block group h-full">
+                    <div class="glass-card p-8 h-full border-white/5 group-hover:border-sky-500/50 transition-all duration-500">
+                        <span class="text-sky-400 text-[10px] font-bold uppercase tracking-widest">Data Modeling & Analytics</span>
+                        <h3 class="font-bold text-2xl mt-4 mb-4 group-hover:text-sky-400 transition">Lok Sabha Election Analysis</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed">
+                            Executed end-to-end modeling of **2024 Election trends** using complex SQL architecture. Designed queries for seat distributions, alliance performance, and margin analysis for high-level political reporting.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-[9px] border border-sky-500/30 px-2 py-1 rounded text-sky-400">PostgreSQL</span>
+                            <span class="text-[9px] border border-sky-500/30 px-2 py-1 rounded text-sky-400">Joins & CTEs</span>
+                            <span class="text-[9px] border border-sky-500/30 px-2 py-1 rounded text-sky-400">Data Modeling</span>
+                        </div>
+                        <span class="text-[10px] font-bold text-white/40 uppercase group-hover:text-white flex items-center gap-2">GitHub Repo <i data-lucide="external-link" class="w-3 h-3"></i></span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="project-slide">
+                <a href="https://github.com/yadnyeshpande" target="_blank" class="block group h-full">
+                    <div class="glass-card p-8 h-full border-white/5 group-hover:border-sky-500/50 transition-all duration-500">
+                        <span class="text-sky-400 text-[10px] font-bold uppercase tracking-widest">Financial Tech</span>
+                        <h3 class="font-bold text-2xl mt-4 mb-4 group-hover:text-sky-400 transition">Weekly Credit Card Dashboard</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed">
+                            Developed a comprehensive dashboard providing **real-time insights** into key performance metrics. Enabling stakeholders to monitor credit card operations effectively through SQL ETL and Power BI.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-[9px] border border-sky-500/30 px-2 py-1 rounded text-sky-400">SQL</span>
+                            <span class="text-[9px] border border-sky-500/30 px-2 py-1 rounded text-sky-400">Power BI</span>
+                            <span class="text-[9px] border border-sky-500/30 px-2 py-1 rounded text-sky-400">Real-time Analysis</span>
+                        </div>
+                        <span class="text-[10px] font-bold text-white/40 uppercase group-hover:text-white flex items-center gap-2">GitHub Repo <i data-lucide="external-link" class="w-3 h-3"></i></span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="project-slide">
+                <a href="https://github.com/yadnyeshpande" target="_blank" class="block group h-full">
+                    <div class="glass-card p-8 h-full border-white/5 group-hover:border-sky-500/50 transition-all duration-500">
+                        <span class="text-sky-400 text-[10px] font-bold uppercase tracking-widest">Statistical EDA</span>
+                        <h3 class="font-bold text-2xl mt-4 mb-4 group-hover:text-sky-400 transition">Iris Data Exploration</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed">
+                            Advanced Python-based statistical analysis featuring **IQR outlier handling**, cluster visualization, and distribution profiling to identify patterns in biological datasets.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-[9px] border border-sky-500/30 px-2 py-1 rounded text-sky-400">Python</span>
+                            <span class="text-[9px] border border-sky-500/30 px-2 py-1 rounded text-sky-400">Seaborn</span>
+                            <span class="text-[9px] border border-sky-500/30 px-2 py-1 rounded text-sky-400">Statistics</span>
+                        </div>
+                        <span class="text-[10px] font-bold text-white/40 uppercase group-hover:text-white flex items-center gap-2">GitHub Repo <i data-lucide="external-link" class="w-3 h-3"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="py-32 px-6">
+    <div class="max-w-4xl mx-auto glass-card p-16 text-center border-sky-500/20">
+        <h2 class="text-4xl font-bold mb-4">Hire a Focused <span class="text-sky-500">Data Enthusiast.</span></h2>
+        <p class="text-slate-400 mb-10">I am currently available for interviews and immediate joining.</p>
+        <div class="flex flex-wrap justify-center gap-8">
+            <a href="mailto:yadnyeshpande342@gmail.com" class="flex items-center gap-2 text-white hover:text-sky-400 font-bold transition">
+                <i data-lucide="mail"></i> Email Me
+            </a>
+            <a href="https://linkedin.com/in/yadnyesh-pande-433a43258/" target="_blank" class="flex items-center gap-2 text-white hover:text-blue-500 font-bold transition">
+                <i data-lucide="linkedin"></i> LinkedIn
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuBtn = document.getElementById('menuBtn');
+
+    function toggleMenu() {
+        mobileMenu.classList.toggle('hidden');
+    }
+
+    menuBtn.addEventListener('click', toggleMenu);
+    lucide.createIcons();
+
+    const ctx = document.getElementById('skillsChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: ['SQL', 'Python', 'Power BI', 'Excel', 'AI/ML', 'EDA'],
+            datasets: [{
+                data: [95, 88, 92, 90, 85, 90],
+                backgroundColor: 'rgba(14, 165, 233, 0.2)',
+                borderColor: '#0ea5e9',
+                pointBackgroundColor: '#0ea5e9'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+                r: {
+                    grid: { color: 'rgba(255,255,255,0.05)' },
+                    angleLines: { color: 'rgba(255,255,255,0.1)' },
+                    ticks: { display: false },
+                    pointLabels: { color: '#94a3b8', font: { size: 10 } }
+                }
+            }
+        }
+    });
+
+    let currentPos = 0;
+    const slider = document.getElementById('slider');
+    const slides = document.querySelectorAll('.project-slide');
+    
+    function moveSlide(direction) {
+        const itemsInView = window.innerWidth < 768 ? 1 : 3;
+        const maxPos = slides.length - itemsInView;
+        
+        currentPos += direction;
+        if (currentPos < 0) currentPos = 0;
+        if (currentPos > maxPos) currentPos = maxPos;
+        
+        const movePercent = window.innerWidth < 768 ? 100 : 33.333;
+        slider.style.transform = `translateX(-${currentPos * movePercent}%)`;
+    }
+</script>
+</body>
+</html>
